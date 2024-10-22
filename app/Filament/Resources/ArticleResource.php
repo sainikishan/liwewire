@@ -5,11 +5,16 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ArticleResource\Pages;
 use App\Filament\Resources\ArticleResource\RelationManagers;
 use App\Models\Article;
+use App\Models\Category;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -26,8 +31,16 @@ class ArticleResource extends Resource
         return $form
             ->schema([
                 //
-                TextInput::make('name'),
-                TextInput::make('designation'),
+                TextInput::make('title')->required()->placeholder('Title'),
+                Select::make('category_id')->label('Category')->options(Category::all()->pluck('name', 'id')),
+                TextInput::make('author')->placeholder('Author'),
+                FileUpload::make('image'),
+                RichEditor::make('content')->columnSpan(2),
+                Select::make('status')->options([
+                    1 => 'Active',
+                    0 => 'Block',
+                ])
+
             ]);
     }
 
@@ -36,6 +49,9 @@ class ArticleResource extends Resource
         return $table
             ->columns([
                 //
+                TextColumn::make('title')->searchable(),
+                ImageColumn::make('Author'),
+
             ])
             ->filters([
                 //
