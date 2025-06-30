@@ -68,24 +68,30 @@
                 <div class="col-lg-9">
                     <div class="me-lg-4">
                         <div class="row gy-5">
-                            <div class="col-md-6" data-aos="fade">
-                                <article class="blog-post">
-                                    <div class="post-slider slider-sm rounded">
-                                        <img loading="lazy" decoding="async" src="images/blog/post-4.jpg"
-                                            alt="Post Thumbnail">
+                            @foreach ($article as $item)
+                                <div class="col-md-6" data-aos="fade">
+                                    <article class="blog-post">
+                                        <div class="post-slider slider-sm rounded">
+                                            <img loading="lazy" decoding="async"
+                                                src="{{ asset('storage/' . $item->image) }}" alt="Post Thumbnail">
 
-                                    </div>
-                                    <div class="pt-4">
-                                        <p class="mb-3">15 Mar, 2020</p>
-                                        <h2 class="h4"><a class="text-black" href="blog-details.html">Lorem, ipsum
-                                                dolor sit amet consectetur adipisicing elit.</a></h2>
-                                        <p>Heading example Here is example of hedings. You can use this heading by
-                                            following …</p> <a href="blog-details.html" class="text-primary fw-bold"
-                                            aria-label="Read the full article by clicking here">Read More</a>
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="col-md-6" data-aos="fade">
+                                        </div>
+                                        <div class="pt-4">
+                                            <p class="mb-3">{{ $item->title }}</p>
+                                            <h2 class="h4">
+                                                <a class="text-black" href="blog-details.html"></p> <a
+                                                        href="blog-details.html" class="text-primary fw-bold"
+                                                        aria-label="Read the full article by clicking here">{{ $item->author }}</br>Read
+                                                        More
+                                                    </a>
+                                                    {{-- <a href="blog-details.html" class="text-primary fw-bold"
+                                                        aria-label="Read the full article by clicking here">Read
+                                                        More</a> --}}
+                                        </div>
+                                    </article>
+                                </div>
+                            @endforeach
+                            {{-- <div class="col-md-6" data-aos="fade">
                                 <article class="blog-post">
                                     <div class="post-slider slider-sm rounded">
                                         <img loading="lazy" decoding="async" src="images/blog/post-1.jpg"
@@ -186,13 +192,13 @@
                                         </ul>
                                     </nav>
                                 </nav>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <!-- categories -->
-                    <div class="widget widget-categories">
+                    {{-- <div class="widget widget-categories">
                         <h5 class="widget-title"><span>Category</span></h5>
                         <ul class="list-unstyled widget-list">
                             <li><a href="#!">Technology <small class="ml-auto">(1)</small></a>
@@ -204,9 +210,9 @@
                             <li><a href="#!">Videography <small class="ml-auto">(1)</small></a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                     <!-- tags -->
-                    <div class="widget widget-tags">
+                    {{-- <div class="widget widget-tags">
                         <h4 class="widget-title"><span>Tags</span></h4>
                         <ul class="list-inline widget-list widget-list-inline taxonomies-list">
                             <li class="list-inline-item"><a href="#!">Booth</a>
@@ -224,9 +230,9 @@
                             <li class="list-inline-item"><a href="#!">Video</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                     <!-- latest post -->
-                    <div class="widget">
+                    {{-- <div class="widget">
                         <h5 class="widget-title"><span>Latest Article</span></h5>
                         <!-- post-item -->
                         <ul class="list-unstyled widget-list">
@@ -274,7 +280,7 @@
                                 </div>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                     <!-- Social -->
 
                 </div>
